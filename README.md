@@ -1,29 +1,39 @@
-# Python Crypto Trading Bot
+# Crypto Bot Refactor
 
-A cryptocurrency trading bot built with Python.
+This is a cleaned multi-file version of my Coinbase trading bot. The goal of this refactor is to improve readability and make the project easier to maintain without changing the core trading behavior.
 
-## Features
+## Files
 
-- Automated trade execution
-- Risk management
-- Position sizing
-- Trade logging
-- Discord alerts
-- Real-time market monitoring
-- Performance tracking
+- `main.py` - main loop
+- `config.py` - settings and constants
+- `models.py` - position dataclass
+- `runtime.py` - shared runtime globals
+- `utils.py` - logging, Discord, file helpers, lock handling
+- `state_manager.py` - state persistence and adaptive settings
+- `market_data.py` - live price, candles, scanner
+- `indicators.py` - EMA, SMA, RSI, pct change
+- `strategy.py` - scoring, filters, symbol selection
+- `execution.py` - trading, position management, equity stats
+- `websocket_manager.py` - Coinbase websocket handlers
+- `reporting.py` - console status and Discord summary
 
-## Technologies
+## Setup
 
-- Python
-- FastAPI
-- REST APIs
-- WebSockets
-- Discord Integration
+1. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## Screenshots
+2. Copy `.env.example` values into your environment or set them in your system.
 
-(Add dashboard screenshots here)
+3. Review `config.py` before running.
 
-## Disclaimer
+4. Start the bot:
+   ```bash
+   python main.py
+   ```
 
-This project is for educational purposes only.
+## Important
+
+- Your old hard-coded Discord webhook was removed. Set `DISCORD_WEBHOOK_URL` through an environment variable.
+- This refactor is meant to preserve behavior as closely as possible, but you should still test in paper mode first.
