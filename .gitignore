@@ -1,0 +1,7 @@
+.env
+pro_state.json
+trade_history.csv
+bot_events.log
+bot.lock
+__pycache__/
+*.pyc
